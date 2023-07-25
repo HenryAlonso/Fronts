@@ -49,6 +49,36 @@ class LinkedList {
         //Return that value
         return current_head_value
     }
+    
+    findSum() {
+        if(!this.head) {
+            return null;
+        }
+
+        let runner = this.head;
+        let sum = 0;
+
+        while (runner != null) {
+            sum += runner.data
+            runner = runner.next
+        }
+        return sum
+    }
+
+    contains(value) {
+        if(!this.head) {
+            return null;
+        }
+        let runner = this.head;
+
+        while (runner != null) {
+            if(value === runner.data) {
+                return true;
+            }
+            runner = runner.next;
+        }
+        return false;
+    }
 }
 
 SLL1 = new LinkedList();
@@ -59,6 +89,11 @@ SLL1.addFront(25)
 console.log(SLL1);
 console.log('\n');
 
+console.log("Adding the values in our nodes together");
+sum = SLL1.findSum();
+console.log("The sum is equal to", sum);
+console.log('\n');
+
 console.log("Removing values from our list");
 SLL1.removeFront();
 console.log(SLL1);
@@ -67,3 +102,9 @@ console.log('\n');
 console.log("Returning the value of the node at the head of the list");
 head_value = SLL1.front();
 console.log("Current head value: ", head_value);
+
+console.log("Checking to see if the provided value exists in any of our nodes");
+value_to_be_checked = SLL1.contains(20);
+console.log(value_to_be_checked ? "It does exist" : "It does not exist");
+value_to_be_checked = SLL1.contains(15);
+console.log(value_to_be_checked ? "It does exist" : "It does not exist");
